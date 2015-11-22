@@ -7,7 +7,7 @@ angular.module('tasker')
 			var JOB_STATUS_OPEN = 'open';
 			var JOB_STATUS_APPLIED = 'applied';
 			var JOB_STATUS_SELECTED = 'selected';
-			var JOB_STATUS_TRAVELLING = 'travelling';
+			var JOB_STATUS_TRAVELLING = 'on my way';
 			var JOB_STATUS_STARTED = 'started';
 			var JOB_STATUS_FINISHED = 'finished';
 			var JOB_STATUS_CLOSED = 'closed';
@@ -72,40 +72,36 @@ angular.module('tasker')
 			}
 
 			function selectApplicant (jobId, applicantId) {
-				var jobUpdate = _jobs.$loaded()
-					.then(function (jobs) {
-						return jobs.$getRecord(jobId);
-					})
+				var _jobRef = $firebaseObject(new Firebase('https://intense-torch-8098.firebaseio.com/tt-jobs/' + jobId));
+				_jobRef.$loaded()
 					.then(function (job) {
-						if (!job) {
-							throw new Error('Job not found');
-						}
-
-						job.selectedApplicant = applicantId;
 						job.status = JOB_STATUS_SELECTED;
 						return job.$save();
 					});
 
-				var applicantUpdate = _applicants.$loaded()
-					.then(function (applicants) {
-						return applicants.$getRecord(applicantId);
-					})
-					.then(function (applicant) {
-						if (!applicant) {
-							throw new Error('Applicant not found');
-						}
-						if (!applicant.jobs) {
-							applicant.jobs = [];
-						}
+				var applicantUpdate = _applicants.$loaded();
+					// .then(function (applicants) {
+					// 	return applicants.$getRecord(applicantId);
+					// })
+					// .then(function (applicant) {
+					// 	if (!applicant) {
+					// 		throw new Error('Applicant not found');
+					// 	}
+					// 	if (!applicant.jobs) {
+					// 		applicant.jobs = [];
+					// 	}
 
-						applicant.jobs.push(jobId);
-						return applicant.$save();
-					});
+					// 	applicant.jobs.push(jobId);
+					// 	return applicant;
+					// });
 
-				return Promise.all([
-					jobUpdate,
-					applicantUpdate
-				]);
+				// return Promise.all([
+				// 	jobUpdate,
+				// 	applicantUpdate
+				// ]).then(function (tuple) {
+				// 	// _jobs.$save();
+				// 	// _applicants.$save();
+				// });
 			}
 
 			return {
