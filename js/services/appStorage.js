@@ -4,14 +4,14 @@ angular.module('tasker')
 		'$firebaseArray',
 		'$firebaseObject',
 		function ($rootScope, $firebaseArray, $firebaseObject) {
-			var JOB_STATUS_OPEN = 'open';
-			var JOB_STATUS_APPLIED = 'applied';
-			var JOB_STATUS_SELECTED = 'selected';
-			var JOB_STATUS_TRAVELLING = 'on my way';
-			var JOB_STATUS_STARTED = 'started';
-			var JOB_STATUS_FINISHED = 'finished';
-			var JOB_STATUS_CLOSED = 'closed';
-			var JOB_STATUS_EXPIRED = 'expired';
+      var JOB_STATUS_OPEN = 'open';
+      var JOB_STATUS_APPLIED = 'applied';
+      var JOB_STATUS_SELECTED = 'Job Accepted';
+      var JOB_STATUS_TRAVELLING = 'On My Way';
+      var JOB_STATUS_STARTED = 'Job Started';
+      var JOB_STATUS_FINISHED = 'Job Finished';
+      var JOB_STATUS_CLOSED = 'closed';
+      var JOB_STATUS_EXPIRED = 'expired';
 
 			var _jobs = $firebaseArray(new Firebase('https://intense-torch-8098.firebaseio.com/tt-jobs'));
 			var _applicants = $firebaseObject(new Firebase('https://intense-torch-8098.firebaseio.com/tt-applicants'));
