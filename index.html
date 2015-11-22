@@ -72,6 +72,9 @@
 		<ng-view />
 		<script type="text/ng-template" id="joblist.html">
 			<div style="height: 100px"></div>
+			<div>
+				<h1 class="job-list-header">Jobs you have posted:</h1>
+			</div>
 			<div class="job-item" ng-repeat="job in jobs">
 				<div class="media" >
 					<div class="media-left">
@@ -85,13 +88,13 @@
 					    	<h4 class="media-heading">{{ job.title }}</h4>
 					    	{{ job.details }}
 					    </a>
-					    <p></p>
+					    <p><i class="fa fa-map-marker" ng-if="job.location"></i><span ng-if="job.location">&nbsp;&nbsp;</span>{{ job.location }}<span ng-if="job.location">&nbsp;&nbsp;</span><i class="fa fa-calendar" ng-if="job.date"></i>&nbsp;&nbsp;{{ job.date }}</p>
 				  	</div>
 				  </div>
 				  <div class="media-right job-info">
-				  	<p>Status: {{ job.status }}</p>
-				  	<p>£{{ job.price }}</p>
-				    <button class="btn btn-primary pull right" ng-if="job.JOB_STATUS === 'applied'">Accept</button>
+				  	<p class="job-status-{{job.status}}" style="overflow: hidden;white-space: nowrap;"><i class="fa fa-calendar-check-o" ng-if="job.status"></i>&nbsp;&nbsp;{{ job.status }}</p>
+				  	<p ng-if="job.price" class="job-price">£{{ job.price }}</p>
+				    <button class="btn btn-primary pull right" ng-if="job.status === 'applied'" ng-click="jobAccept($event, job.$id, job.applicants.$id)">Accept</button>
 				  </div>
 				</div>
 			</div>
