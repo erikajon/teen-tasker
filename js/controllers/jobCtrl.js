@@ -18,14 +18,11 @@ angular.module('tasker')
 			duration: $scope.newJob.duration,
 			price: $scope.newJob.price,
 			location: $scope.newJob.location.trim(),
-			when: $scope.newJob.when,
+			when: $scope.newJob.when.getTime() || Date.now(),
 			details: $scope.newJob.details,
 			completed: false
 		};
-        // $scope.testNewVars.date = $scope.testNewVars.date ?
-        //   $scope.testNewVars.date.getTime() : Date.now();
-
-        appStorage.addJob($scope.newJob);
+        appStorage.addJob(newJob);
         $scope.newJob = {};
       }
 

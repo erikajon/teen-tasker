@@ -1,0 +1,23 @@
+.job-item {
+	border: 2px solid rgb(254, 209, 54);
+	padding: 15px 0;
+	background-color: #f8f8f8;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.media-object {
+	height: 60px;
+    padding-left: 10px;
+}
+
+#main-logo {
+	height: 160px;
+    margin-bottom: 30px;
+}
+
+@media screen and (max-with: 400px) {
+	.intro-heading {
+		font-size: 40px;
+	}
+}
