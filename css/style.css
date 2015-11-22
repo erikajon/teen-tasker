@@ -59,7 +59,14 @@
 }
 
 .job-tasker {
-	color: #777;
+	padding-bottom: 10px;
+	color: rgb(51, 122, 183);
+}
+
+.job-tasker-name {
+	display: block;
+	clear: both;
+	padding: 10px 0;
 }
 
 @media screen and (max-with: 400px) {
