@@ -302,7 +302,7 @@
 		                <div class="col-lg-12">
 		                    <form id="new-form" ng-submit="submit()">
 		                        <div class="row">
-		                            <div class="col-md-6">
+		                            <div class="col-md-6 col-md-offset-3">
 		                                <div class="form-group">
 		                                    <input type="text" class="form-control" id="new-title" placeholder="Briefly, what needs to be done? *" ng-model="newJob.title" ng-disabled="saving" autofocus required data-validation-required-message="Please enter a job title.">
 		                                    <p class="help-block text-danger"></p>
@@ -323,8 +323,6 @@
 		                                    <input type="datetime-local" step="900" class="form-control" id="new-when" placeholder="When do you want the job done? *" ng-model="newJob.when" ng-disabled="saving" required data-validation-required-message="Please enter date and time you want the job started.">
 		                                    <p class="help-block text-danger"></p>
 		                                </div>
-		                            </div>
-		                            <div class="col-md-6">
 		                                <div class="form-group">
 		                                    <textarea class="form-control" id="new-details" placeholder="What details do you need to tell the teen-tasker?" ng-model="newJob.details" ng-disabled="saving"></textarea>
 		                                    <p class="help-block text-danger"></p>
