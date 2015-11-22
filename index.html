@@ -71,31 +71,45 @@
 
 		<ng-view />
 		<script type="text/ng-template" id="joblist.html">
-			<div style="height: 100px"></div>
-			<div>
-				<h1 class="job-list-header">Jobs you have posted:</h1>
-			</div>
-			<div class="job-item" ng-repeat="job in jobs">
-				<div class="media" >
-					<div class="media-left">
-					    <a href="#">
-					      <img class="media-object" src="./img/logo-gr.png" alt="...">
-					    </a>
+			<div class="row">
+				<div class="col-sm-10 col-sm-offset-1">
+					<div style="height: 100px"></div>
+					<div>
+						<h1 class="job-list-header">Jobs you have posted:</h1>
 					</div>
-				  <div class="media-body">
-				  	<div class="col-sm-10">
-				  		<a href="#">
-					    	<h4 class="media-heading">{{ job.title }}</h4>
-					    	{{ job.details }}
-					    </a>
-					    <p><i class="fa fa-map-marker" ng-if="job.location"></i><span ng-if="job.location">&nbsp;&nbsp;</span>{{ job.location }}<span ng-if="job.location">&nbsp;&nbsp;</span><i class="fa fa-calendar" ng-if="job.date"></i>&nbsp;&nbsp;{{ job.date }}</p>
-				  	</div>
-				  </div>
-				  <div class="media-right job-info">
-				  	<p class="job-status-{{job.status}}" style="overflow: hidden;white-space: nowrap;"><i class="fa fa-calendar-check-o" ng-if="job.status"></i>&nbsp;&nbsp;{{ job.status }}</p>
-				  	<p ng-if="job.price" class="job-price">£{{ job.price }}</p>
-				    <button class="btn btn-primary pull right" ng-if="job.status === 'applied'" ng-click="jobAccept($event, job.$id, job.applicants.$id)">Accept</button>
-				  </div>
+					<div class="job-item" ng-repeat="job in jobs">
+						<div class="media" >
+							<div class="media-left">
+							    <a href="#">
+							      <img class="media-object" src="./img/logo-gr.png" alt="...">
+							    </a>
+							</div>
+						  <div class="media-body">
+						  	<div class="col-sm-10">
+						  		<a href="#">
+							    	<h4 class="media-heading">{{ job.title }}</h4>
+							    	{{ job.details }}
+							    </a>
+							    <p><i class="fa fa-map-marker" ng-if="job.location"></i><span ng-if="job.location">&nbsp;&nbsp;</span>{{ job.location }}<span ng-if="job.location">&nbsp;&nbsp;</span><i class="fa fa-calendar" ng-if="job.date"></i>&nbsp;&nbsp;{{ job.date }}</p>
+							    <p class="job-tasker" ng-if="job.status === JOB_STATUS.JOB_STATUS_SELECTED || job.status === JOB_STATUS.JOB_STATUS_FINISHED">Your tasker:	</p>
+								<div style="float: left; background: url(https://pixabay.com/static/uploads/photo/2014/04/02/11/01/tick-305245_640.png); background-size: contain; width: 50px; height: 50px;"
+									ng-if="job.status === JOB_STATUS.JOB_STATUS_SELECTED || job.status === JOB_STATUS.JOB_STATUS_FINISHED">
+								</div>
+							    <!-- fake map -->
+								<iframe ng-if="job.status === 'travelling'" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.4362898315535!2d-0.08891394864149658!3d51.505211302537646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760350ae7fbe89%3A0xdd68d815c9e0176e!2s1%2C+London+SE1+9GF!5e0!3m2!1sen!2suk!4v1448179540031"
+									width="300" height="200"
+									frameborder="0"
+									style="border:0"
+									ng-if="job.status === JOB_STATUS.JOB_STATUS_TRAVELLING || job.status === JOB_STATUS.JOB_STATUS_STARTED || job.status === JOB_STATUS.JOB_STATUS_FINISHED"></iframe>
+						  	</div>
+						  </div>
+						  <div class="media-right job-info">
+						  	<p class="job-status-{{job.status}}" style="overflow: hidden;white-space: nowrap;"><i class="fa fa-calendar-check-o" ng-if="job.status"></i>&nbsp;&nbsp;{{ job.status }}</p>
+						  	<p ng-if="job.price" class="job-price">£{{ job.price }}</p>
+						    <button class="btn btn-primary pull right" ng-if="job.status === 'applied'" ng-click="jobAccept($event, job.$id, job.applicants.$id)">Accept</button>
+						  </div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</script>
