@@ -338,22 +338,23 @@
 							ng-if="job.applicants">
 
 							<div class="test-job-applicant"
-								ng-repeat="applicant in job.applicants">
+								ng-if="job.applicants">
 
 								<div>
 									<button style="float: right; margin-top: 10px; margin-right: 10px"
-										ng-if="job.status === JOB_STATUS.JOB_STATUS_OPEN"
+										ng-if="job.status === JOB_STATUS.JOB_STATUS_APPLIED"
 										ng-click="testJobAccept($event, job.$id, applicant.$id)">Accept</button>
+
 									<div style="float: right; margin-top: 10px; margin-right: 10px"
-										ng-if="job.status === JOB_STATUS.JOB_STATUS_TRAVELLING || job.status === JOB_STATUS.JOB_STATUS_STARTED || job.status === JOB_STATUS.JOB_STATUS_FINISHED"
+										ng-if="job.status === JOB_STATUS.JOB_STATUS_SELECTED || job.status === JOB_STATUS.JOB_STATUS_TRAVELLING || job.status === JOB_STATUS.JOB_STATUS_STARTED || job.status === JOB_STATUS.JOB_STATUS_FINISHED"
 										>{{ job.status }}</div>
 									<div style="float: right; background: url(https://pixabay.com/static/uploads/photo/2014/04/02/11/01/tick-305245_640.png); background-size: contain; width: 30px; height: 30px; margin-top: 10px; margin-right: 10px"
-										ng-if="job.status === JOB_STATUS.JOB_STATUS_SELECTED">
+										ng-if="job.status === JOB_STATUS.JOB_STATUS_SELECTED || job.status === JOB_STATUS.JOB_STATUS_FINISHED">
 									</div>
 
 									<!-- hard coded applicant -->
-									<img style="width: 50px; height: 50px; display: inline-block" ng-src="{{ 'img/' + applicant.imgUrl }}"/>
-									<div style="font-weight: bold; display: inline-block">{{ applicant.name }}</div>
+									<img style="width: 50px; height: 50px; display: inline-block" ng-src="{{ 'img/' + job.applicants.imgUrl }}"/>
+									<div style="font-weight: bold; display: inline-block">{{ job.applicants.name }}</div>
 								</div>
 
 							</div>

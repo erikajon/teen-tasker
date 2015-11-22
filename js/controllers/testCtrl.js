@@ -2,7 +2,7 @@ angular.module('tasker')
   .controller('TestCtrl', [
     '$scope',
     'appStorage',
-    function JobCtrl($scope, appStorage) {
+    function ($scope, appStorage) {
       var EMPLOYER_ID = 'demo-employer';  // temp hack
       function scopeTestNewSubmit () {
         $scope.testNewVars.employer = EMPLOYER_ID;
