@@ -31,11 +31,11 @@ angular.module('tasker')
 		$scope.addJob = function () {
 			var newJob = {
 				title: $scope.newJob.title.trim(),
-				duration: $scope.newJob.duration.trim(),
-				price: $scope.newJob.price.trim(),
+				duration: $scope.newJob.duration,
+				price: $scope.newJob.price,
 				location: $scope.newJob.location.trim(),
-				when: $scope.newJob.when.trim(),
-				details: $scope.newJob.details.trim(),
+				when: $scope.newJob.when,
+				details: $scope.newJob.details,
 				completed: false
 			};
 
