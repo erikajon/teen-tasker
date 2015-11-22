@@ -35,7 +35,7 @@ angular.module('tasker')
 				price: $scope.newJob.price,
 				location: $scope.newJob.location.trim(),
 				when: $scope.newJob.when,
-				details: $scope.newJob.details.trim(),
+				details: $scope.newJob.details,
 				completed: false
 			};
 
