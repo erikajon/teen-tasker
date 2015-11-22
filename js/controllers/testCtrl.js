@@ -4,6 +4,25 @@ angular.module('tasker')
     'appStorage',
     function JobCtrl($scope, appStorage) {
       var EMPLOYER_ID = 'demo-employer';  // temp hack
+      function scopeTestNewSubmit () {
+        $scope.testNewVars.employer = EMPLOYER_ID;
+        $scope.testNewVars.date = $scope.testNewVars.date ?
+          $scope.testNewVars.date.getTime() : Date.now();
+        $scope.testNewVars.status = $scope.JOB_STATUS.JOB_STATUS_OPEN;
+
+        appStorage.addJob($scope.testNewVars);
+        $scope.testNewVars = {};
+      }
+
+      function scopeTestJobDelete (e, jobObj) {
+        e.preventDefault();
+        appStorage.cancelJob(jobObj);
+      }
+
+      function scopeTestJobAccept (e, jobId, applicantId) {
+        e.preventDefault();
+        appStorage.selectApplicant(jobId, applicantId);
+      }
 
       function init () {
         // load all data variables asynchronously
@@ -24,26 +43,6 @@ angular.module('tasker')
         $scope.testNewSubmit = scopeTestNewSubmit;
         $scope.testJobDelete = scopeTestJobDelete;
         $scope.testJobAccept = scopeTestJobAccept;
-      }
-
-      function scopeTestNewSubmit () {
-        $scope.testNewVars.employer = EMPLOYER_ID;
-        $scope.testNewVars.date = $scope.testNewVars.date ?
-          $scope.testNewVars.date.getTime() : Date.now();
-        $scope.testNewVars.status = $scope.JOB_STATUS.JOB_STATUS_OPEN;
-
-        appStorage.addJob($scope.testNewVars);
-        $scope.testNewVars = {};
-      }
-
-      function scopeTestJobDelete (e, jobObj) {
-        e.preventDefault();
-        appStorage.cancelJob(jobObj);
-      }
-
-      function scopeTestJobAccept (e, jobId, applicantId) {
-        e.preventDefault();
-        appStorage.selectApplicant(jobId, applicantId);
       }
 
       init();

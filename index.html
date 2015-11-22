@@ -66,17 +66,16 @@
 	    </nav>
 
 		<ng-view />
-
 		<script type="text/ng-template" id="joblist.html">
+		<div style="height: 100px"></div>
 			<div class="media" ng-repeat="job in jobs">
 			  <div class="media-left">
-			    <a href="#">
-			      <img class="media-object" src="..." alt="...">
-			    </a>
 			  </div>
 			  <div class="media-body">
-			    <h4 class="media-heading">{{ job.title }}</h4>
-			    {{ job.details }}
+			    <a href="#">
+			    	<h4 class="media-heading">{{ job.title }}</h4>
+			    	{{ job.details }}
+			    </a>
 			  </div>
 			</div>
 		</script>
@@ -259,7 +258,7 @@
 		            </div>
 		            <div class="row">
 		                <div class="col-lg-12">
-		                    <form id="new-form" ng-submit="addJob()">
+		                    <form id="new-form" ng-submit="submit()">
 		                        <div class="row">
 		                            <div class="col-md-6">
 		                                <div class="form-group">
@@ -377,6 +376,7 @@
 		<script src="js/app.js"></script>
 		<script src="js/controllers/jobCtrl.js"></script>
 		<script src="js/controllers/testCtrl.js"></script>
+		<script src="js/controllers/jobsListCtrl.js"></script>
 		<script src="js/services/appStorage.js"></script>
 	</body>
 </html>

@@ -25,7 +25,7 @@ angular.module('tasker', [
 		};
 
 		var jobsConfig = {
-			controller: 'JobCtrl',
+			controller: 'JobsListCtrl',
 			templateUrl: 'joblist.html'
 		};
 
