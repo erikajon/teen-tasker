@@ -6,7 +6,7 @@
  * - exposes the model to the template and provides event handlers
  */
 angular.module('tasker')
-	.controller('JobCtrl', function JobCtrl($scope, $routeParams, $filter, appStorage) {
+	.controller('JobCtrl', function JobCtrl($scope, $routeParams, $filter, appStorage, $window) {
 		'use strict';
 
 	  var EMPLOYER_ID = 'demo-employer';  // temp hack
@@ -24,6 +24,7 @@ angular.module('tasker')
 		};
         appStorage.addJob(newJob);
         $scope.newJob = {};
+        $window.location = "/#/jobs"
       }
 
 

@@ -79,7 +79,7 @@
 					<div>
 						<h2 class="section-heading">Jobs you have posted</h2>
 					</div>
-					<div class="job-item" ng-repeat="job in jobs">
+					<div class="job-item" ng-repeat="job in jobs | orderBy:'$id'">
 						<div class="media" >
 							<div class="media-left">
 							    <a href="#">
@@ -97,20 +97,20 @@
 							    	<span ng-if="job.location">&nbsp;&nbsp;</span>{{ job.location }}
 							    	<span ng-if="job.location">&nbsp;&nbsp;</span><i class="fa fa-calendar" ng-if="job.date"></i>&nbsp;&nbsp;{{ job.date }}
 							    </p>
-							    <div ng-if="job.status !== JOB_STATUS.JOB_STATUS_OPEN">
+							    <div class="col-sm-4" ng-if="job.status !== JOB_STATUS.JOB_STATUS_OPEN">
 							    	<div class="job-tasker" >Your tasker:	</div>
 									<div style="float: left; background: url(./img/peter.png); background-size: contain; width: 50px; height: 50px;"
 										ng-if="job.status !== JOB_STATUS.JOB_STATUS_OPEN">
 									</div>
 									<div class="job-tasker-name">{{ job.applicants.name }}</div>
-								    <!-- fake map -->
-								    <div style="clear: both">
-								    	<iframe ng-if="job.status !== JOB_STATUS_OPEN" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.4362898315535!2d-0.08891394864149658!3d51.505211302537646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760350ae7fbe89%3A0xdd68d815c9e0176e!2s1%2C+London+SE1+9GF!5e0!3m2!1sen!2suk!4v1448179540031"
-										width="300" height="200"
-										frameborder="0"
-										style="border:0"
-										ng-if="job.status === JOB_STATUS.JOB_STATUS_TRAVELLING || job.status === JOB_STATUS.JOB_STATUS_STARTED || job.status === JOB_STATUS.JOB_STATUS_FINISHED"></iframe>
-								    </div>
+							    </div>
+							    <!-- fake map -->
+							    <div class="col-sm-8" ng-if="job.status === JOB_STATUS.JOB_STATUS_TRAVELLING || job.status === JOB_STATUS.JOB_STATUS_STARTED || job.status === JOB_STATUS.JOB_STATUS_FINISHED">
+							    	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.4362898315535!2d-0.08891394864149658!3d51.505211302537646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760350ae7fbe89%3A0xdd68d815c9e0176e!2s1%2C+London+SE1+9GF!5e0!3m2!1sen!2suk!4v1448179540031"
+									width="300" height="200"
+									frameborder="0"
+									style="border:0"
+									ng-if="job.status === JOB_STATUS.JOB_STATUS_TRAVELLING || job.status === JOB_STATUS.JOB_STATUS_STARTED || job.status === JOB_STATUS.JOB_STATUS_FINISHED"></iframe>
 							    </div>
 						  	</div>
 						  </div>
