@@ -14,18 +14,23 @@ angular.module('tasker')
           $scope.applicants = applicants;
         });
 
+        // external bindings
+        $scope.JOB_STATUS = appStorage.JOB_STATUS;
+
         // local bindings
         $scope.testNewVars = {};
+        $scope.employerId = EMPLOYER_ID;
+
         $scope.testNewSubmit = scopeTestNewSubmit;
         $scope.testJobDelete = scopeTestJobDelete;
-        $scope.employerId = EMPLOYER_ID;
-        $scope.JOB_STATUS = appStorage.JOB_STATUS;
+        $scope.testJobAccept = scopeTestJobAccept;
       }
 
       function scopeTestNewSubmit () {
         $scope.testNewVars.employer = EMPLOYER_ID;
         $scope.testNewVars.date = $scope.testNewVars.date ?
           $scope.testNewVars.date.getTime() : Date.now();
+        $scope.testNewVars.status = $scope.JOB_STATUS.JOB_STATUS_OPEN;
 
         appStorage.addJob($scope.testNewVars);
         $scope.testNewVars = {};
@@ -34,6 +39,11 @@ angular.module('tasker')
       function scopeTestJobDelete (e, jobObj) {
         e.preventDefault();
         appStorage.cancelJob(jobObj);
+      }
+
+      function scopeTestJobAccept (e, jobId, applicantId) {
+        e.preventDefault();
+        appStorage.selectApplicant(jobId, applicantId);
       }
 
       init();

@@ -319,6 +319,37 @@
 						<p><b>Duration:</b> {{ job.duration }}</p>
 						<p><b>Rate:</b> {{ job.rate }}</p>
 						<p><b>Details:</b> {{ job.details }}</p>
+						<div class="test-job-item-status"
+							ng-if="job.applicants">
+
+							<div class="test-job-applicant"
+								ng-repeat="applicant in job.applicants">
+
+								<div>
+									<button style="float: right; margin-top: 10px; margin-right: 10px"
+										ng-if="job.status === JOB_STATUS.JOB_STATUS_OPEN"
+										ng-click="testJobAccept($event, job.$id, applicant.$id)">Accept</button>
+									<div style="float: right; margin-top: 10px; margin-right: 10px"
+										ng-if="job.status === JOB_STATUS.JOB_STATUS_TRAVELLING || job.status === JOB_STATUS.JOB_STATUS_STARTED || job.status === JOB_STATUS.JOB_STATUS_FINISHED"
+										>{{ job.status }}</div>
+									<div style="float: right; background: url(https://pixabay.com/static/uploads/photo/2014/04/02/11/01/tick-305245_640.png); background-size: contain; width: 30px; height: 30px; margin-top: 10px; margin-right: 10px"
+										ng-if="job.status === JOB_STATUS.JOB_STATUS_SELECTED">
+									</div>
+
+									<!-- hard coded applicant -->
+									<img style="width: 50px; height: 50px; display: inline-block" ng-src="{{ 'img/' + applicant.imgUrl }}"/>
+									<div style="font-weight: bold; display: inline-block">{{ applicant.name }}</div>
+								</div>
+
+							</div>
+
+							<!-- fake map -->
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.4362898315535!2d-0.08891394864149658!3d51.505211302537646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760350ae7fbe89%3A0xdd68d815c9e0176e!2s1%2C+London+SE1+9GF!5e0!3m2!1sen!2suk!4v1448179540031"
+								width="300" height="200"
+								frameborder="0"
+								style="border:0"
+								ng-if="job.status === JOB_STATUS.JOB_STATUS_TRAVELLING || job.status === JOB_STATUS.JOB_STATUS_STARTED || job.status === JOB_STATUS.JOB_STATUS_FINISHED"></iframe>
+						</div>
 					</div>
 				</div>
 				<div class="test-jobs-create-container"
