@@ -16,6 +16,27 @@
     margin-bottom: 30px;
 }
 
+.job-info {
+	padding-right: 15px;
+}
+
+.job-status-open {
+	color: orange;
+}
+
+.job-status-applied {
+	color: #2e6da4;
+}
+
+.job-status-selected {
+	color: green;
+}
+
+.job-info p {
+	text-align: right;
+}
+
+
 @media screen and (max-with: 400px) {
 	.intro-heading {
 		font-size: 40px;

@@ -85,13 +85,13 @@
 					    	<h4 class="media-heading">{{ job.title }}</h4>
 					    	{{ job.details }}
 					    </a>
-					    <p></p>
+					    <p><i class="fa fa-map-marker" ng-if="job.location"></i><span ng-if="job.location">&nbsp;&nbsp;</span>{{ job.location }}<span ng-if="job.location">&nbsp;&nbsp;</span><i class="fa fa-calendar" ng-if="job.date"></i>&nbsp;&nbsp;{{ job.date }}</p>
 				  	</div>
 				  </div>
 				  <div class="media-right job-info">
-				  	<p>Status: {{ job.status }}</p>
-				  	<p>£{{ job.price }}</p>
-				    <button class="btn btn-primary pull right" ng-if="job.JOB_STATUS === 'applied'">Accept</button>
+				  	<p class="job-status-{{job.status}}">{{ job.status }}</p>
+				  	<p ng-if="job.price">£{{ job.price }}</p>
+				    <button class="btn btn-primary pull right" ng-if="job.status === 'applied'" ng-click="jobAccept($event, job.$id, job.applicants.$id)">Accept</button>
 				  </div>
 				</div>
 			</div>
