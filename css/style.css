@@ -52,10 +52,21 @@
 	text-align: right;
 }
 
-.job-price {
+.job-price, .job-tasker {
 	color: rgb(51, 122, 183);
     font-weight: 900;
     font-size: 18px;
+}
+
+.job-tasker {
+	padding-bottom: 10px;
+	color: rgb(51, 122, 183);
+}
+
+.job-tasker-name {
+	display: block;
+	clear: both;
+	padding: 10px 0;
 }
 
 @media screen and (max-with: 400px) {
